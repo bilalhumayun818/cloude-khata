@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Artisan;
 
 class ModulesController extends Controller
 {
+    /**
+     * Modules that have been permanently disabled for this installation.
+     */
+    private const HIDDEN_MODULES = ['Manufacturing'];
+
     protected $moduleUtil;
 
     /**
@@ -42,6 +47,9 @@ class ModulesController extends Controller
 
         //Get list of all modules.
         $modules = Module::toCollection()->toArray();
+        $modules = array_filter($modules, function ($module) {
+            return ! in_array($module['name'], self::HIDDEN_MODULES, true);
+        });
         //print_r($modules);exit;
 
         foreach ($modules as $module => $details) {
@@ -171,6 +179,10 @@ class ModulesController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
+        if (in_array($module_name, self::HIDDEN_MODULES, true)) {
+            abort(404);
+        }
+
         $notAllowed = $this->moduleUtil->notAllowedInDemo();
         if (! empty($notAllowed)) {
             return $notAllowed;
@@ -208,6 +220,10 @@ class ModulesController extends Controller
     {
         if (! auth()->user()->can('manage_modules')) {
             abort(403, 'Unauthorized action.');
+        }
+
+        if (in_array($module_name, self::HIDDEN_MODULES, true)) {
+            abort(404);
         }
 
         $notAllowed = $this->moduleUtil->notAllowedInDemo();
