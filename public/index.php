@@ -4,6 +4,8 @@ use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
+// Force asset path for subdirectory
+$_SERVER['SCRIPT_NAME'] = '/cloud/index.php';
 
 /*
 |--------------------------------------------------------------------------

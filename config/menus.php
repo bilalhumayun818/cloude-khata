@@ -14,6 +14,6 @@ return [
         'adminltecustom' => \App\Http\AdminlteCustomPresenter::class,
     ],
 
-    'ordering' => true,
+    'ordering' => false,
 
 ];

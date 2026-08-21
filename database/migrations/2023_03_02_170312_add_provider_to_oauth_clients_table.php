@@ -12,11 +12,13 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
+{
+    if (!Schema::hasColumn('oauth_clients', 'provider')) {
         Schema::table('oauth_clients', function (Blueprint $table) {
-            $table->string('provider')->after('secret')->nullable();
+            $table->string('provider')->nullable()->after('secret');
         });
     }
+}
 
     /**
      * Reverse the migrations.
