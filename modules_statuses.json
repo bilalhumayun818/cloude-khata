@@ -7,7 +7,7 @@
     "Crm": true,
     "Ecommerce": true,
     "FieldForce": true,
-    "Manufacturing": true,
+    "Manufacturing": false,
     "ProductCatalogue": true,
     "Project": true,
     "Repair": true,

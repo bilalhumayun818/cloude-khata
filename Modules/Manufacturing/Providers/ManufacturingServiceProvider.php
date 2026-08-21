@@ -17,6 +17,10 @@ class ManufacturingServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (! \Module::isEnabled('Manufacturing')) {
+            return;
+        }
+
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
@@ -45,6 +49,10 @@ class ManufacturingServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if (! \Module::isEnabled('Manufacturing')) {
+            return;
+        }
+
         $this->app->register(RouteServiceProvider::class);
         $this->registerCommands();
     }

@@ -160,7 +160,7 @@
             @endphp
 
             @foreach($mods as $mod)
-                @if(!isset($modules[$mod['n']]))
+                @if($mod['n'] !== 'Manufacturing' && !isset($modules[$mod['n']]))
                     <tr>
                         <td><i class="fas fa-hand-point-right fa-2x"></i></td>
                         <td>

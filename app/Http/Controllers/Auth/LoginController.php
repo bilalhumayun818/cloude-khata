@@ -67,6 +67,23 @@ class LoginController extends Controller
         return 'username';
     }
 
+    /**
+     * Allow a user to sign in with either the username chosen during
+     * registration or their registered email address.
+     *
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        $login = $request->input($this->username());
+        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        return [
+            $field => $login,
+            'password' => $request->input('password'),
+        ];
+    }
+
     public function logout()
     {
         $this->businessUtil->activityLog(auth()->user(), 'logout');

@@ -21,7 +21,7 @@ class ModuleUtil extends Util
      */
     public function isModuleInstalled($module_name)
     {
-        $is_available = Module::has($module_name);
+        $is_available = Module::has($module_name) && Module::isEnabled($module_name);
 
         if ($is_available) {
             //Check if installed by checking the system table {module_name}_version
