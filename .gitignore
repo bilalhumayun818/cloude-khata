@@ -5,6 +5,13 @@
 /storage/
 /vendor
 /.idea
+/vendor
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
+/public/uploads
+/node_modules
 /.vagrant
 Homestead.json
 Homestead.yaml
