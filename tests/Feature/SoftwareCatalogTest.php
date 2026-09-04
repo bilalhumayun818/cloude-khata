@@ -46,6 +46,15 @@ class SoftwareCatalogTest extends TestCase
         $this->get('/software/not-a-product')->assertNotFound();
     }
 
+    public function testConfiguredCloudKhataPathOpensTheLoginPage()
+    {
+        $this->assertSame('cloude', config('software.login_path'));
+
+        $this->get('/cloude')
+            ->assertOk()
+            ->assertViewIs('auth.login');
+    }
+
     public function testAllProductsUseTheMonochromePalette()
     {
         $products = config('software.products');

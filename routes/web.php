@@ -59,6 +59,7 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VariationTemplateController;
 use App\Http\Controllers\WarrantyController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -90,6 +91,9 @@ Route::middleware(['setData'])->group(function () {
             'products' => config('software.products'),
         ]);
     })->where('slug', '[a-z0-9-]+')->name('software.show');
+
+    Route::get('/'.config('software.login_path'), [LoginController::class, 'showLoginForm'])
+        ->name('software.login');
 
     Auth::routes();
 

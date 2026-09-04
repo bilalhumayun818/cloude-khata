@@ -3,6 +3,7 @@
 return [
     'sales_email' => env('SOFTWARE_SALES_EMAIL', 'bill.humayun1@gmail.com'),
     'sales_phone' => env('SOFTWARE_SALES_PHONE', '+92 3003662818'),
+    'login_path' => trim((string) env('SOFTWARE_LOGIN_PATH', 'cloude'), '/') ?: 'cloude',
 
     'products' => [
         'cloud-khata' => [
