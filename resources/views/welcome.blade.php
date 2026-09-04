@@ -5,8 +5,6 @@
 
 @section('content')
     <section class="hero">
-        <div class="hero-orb orb-one"></div>
-        <div class="hero-orb orb-two"></div>
         <div class="shell hero-grid">
             <div class="hero-copy">
                 <div class="hero-kicker"><span></span> Business software, made practical</div>
@@ -39,8 +37,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="float-card float-orders"><span>✓</span><p><small>Orders today</small><strong>+18.4%</strong></p></div>
-                <div class="float-card float-live"><i></i><p><small>All systems</small><strong>Running smoothly</strong></p></div>
             </div>
         </div>
     </section>

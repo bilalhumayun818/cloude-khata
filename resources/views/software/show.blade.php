@@ -6,7 +6,6 @@
 
 @section('content')
     <section class="product-hero" style="--accent: {{ $product['color'] }}; --soft: {{ $product['soft_color'] }}; --secondary: {{ $product['secondary_color'] }}; --accent-text: {{ $product['accent_text'] }}">
-        <div class="product-hero-pattern"></div>
         <div class="shell">
             <a class="back-link" href="{{ route('software.index') }}#solutions"><span>←</span> All solutions</a>
             <div class="product-hero-grid">

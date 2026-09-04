@@ -17,7 +17,9 @@ class SoftwareCatalogTest extends TestCase
             ->assertSee('DOMS')
             ->assertSee('RMS')
             ->assertSee('Paddle')
-            ->assertDontSee('Sign in');
+            ->assertDontSee('Sign in')
+            ->assertDontSee('Orders today')
+            ->assertDontSee('Running smoothly');
     }
 
     /** @dataProvider productProvider */
@@ -42,16 +44,15 @@ class SoftwareCatalogTest extends TestCase
         $this->get('/software/not-a-product')->assertNotFound();
     }
 
-    public function testProductBrandColorsMatchTheRequestedPalette()
+    public function testAllProductsUseTheMonochromePalette()
     {
         $products = config('software.products');
 
-        $this->assertSame('#eab308', $products['vendify']['color']);
-        $this->assertSame('#f97316', $products['rms']['color']);
-        $this->assertSame('#111111', $products['paddle']['color']);
-        $this->assertSame('#a3e635', $products['paddle']['secondary_color']);
-        $this->assertSame('#2563eb', $products['cloud-khata']['color']);
-        $this->assertSame('#2563eb', $products['cx-couriers']['color']);
+        foreach ($products as $product) {
+            $this->assertSame('#222222', $product['color']);
+            $this->assertSame('#ececea', $product['soft_color']);
+            $this->assertSame('#d6d6d2', $product['secondary_color']);
+        }
     }
 
     public function productProvider()

@@ -11,7 +11,7 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
 
 /* BroshTech neutral brand refresh */
-:root{--ink:#111;--muted:#676767;--line:#e5e5e2;--cream:#f4f4f2;--violet:#111;--navy:#101010;--orange:#a3e635}
+:root{--ink:#111;--muted:#676767;--line:#e5e5e2;--cream:#f4f4f2;--violet:#111;--navy:#101010;--orange:#777}
 .site-header.scrolled,.product-page .site-header{background:rgba(248,248,247,.94);border-color:#dededb;box-shadow:0 8px 30px rgba(0,0,0,.05)}
 .brand>span:last-child>span{color:#777}
 .brand-mark{background:#111;box-shadow:0 7px 18px rgba(0,0,0,.16)}
@@ -56,3 +56,37 @@
 .product-cta .shell{position:relative;z-index:1}
 .product-cta .button-white-outline{color:var(--accent-text);border-color:currentColor}
 .footer-grid .brand>span:last-child>span{color:#8d8d88}
+
+/* Unified page canvas: product colors are accents only, never section backgrounds. */
+body,.hero,.solutions,.why-us,.cta-band,.product-hero,.feature-section,.product-cta,.more-products{background:#f4f4f2}
+.hero:before,.hero-orb,.visual-glow,.product-hero-pattern{display:none}
+.why-us{color:var(--ink);border-top:1px solid #dededb;border-bottom:1px solid #dededb}
+.section-kicker-light{color:#555}
+.why-copy p,.why-list p{color:var(--muted)}
+.why-list>div{border-color:#d7d7d3}
+.why-list span{color:#777}
+.button-light{color:#fff;background:#111}
+.product-card:before{background:#ececea}
+.product-icon{box-shadow:none}
+.cta-band{border-top:1px solid #dededb}
+.product-hero{border-bottom:1px solid #dededb}
+.product-showcase{padding-right:12px}
+.showcase-window{box-shadow:0 28px 70px rgba(0,0,0,.14)}
+.product-cta{color:var(--ink);border-top:1px solid #dededb;border-bottom:1px solid #dededb}
+.product-cta:after{display:none}
+.product-cta .button-white{color:#fff;background:#111}
+.product-cta .button-white-outline{color:#111;border-color:#aaa;background:transparent}
+.site-footer{background:#0a0a0a}
+
+/* Strict monochrome treatment, including all dashboard and graph details. */
+.site-header,.site-header.scrolled,.product-page .site-header{background:#f4f4f2;border-color:#dededb}
+.metric-row i,.metric-row i.orange,.metric-row i.green{background:#70706c}
+.chart-bars i{background:linear-gradient(#333,#b8b8b3)}
+.showcase-bar i,.showcase-bar i:nth-child(2),.showcase-bar i:nth-child(3){background:#a7a7a2}
+.showcase-stats i{background:linear-gradient(135deg,#fff,#ececea)}
+.showcase-chart span{background:linear-gradient(to top,#333,#b8b8b3)}
+.showcase-body aside b{background:#222}
+.showcase-badge>span{color:#fff;background:#222}
+.feature-check{color:#222;background:#e4e4e0;box-shadow:none}
+.product-card:hover{border-color:#bdbdb8}
+.product-card-copy small,.more-card small,.product-title-row>span,.back-link span,.product-card>a span,.more-card>b{color:#444}
