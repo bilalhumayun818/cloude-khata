@@ -76,8 +76,20 @@ include_once 'install_r.php';
 
 Route::middleware(['setData'])->group(function () {
     Route::get('/', function () {
-        return view('welcome');
-    });
+        return view('welcome', ['products' => config('software.products')]);
+    })->name('software.index');
+
+    Route::get('/software/{slug}', function ($slug) {
+        $product = config("software.products.{$slug}");
+
+        abort_unless($product, 404);
+
+        return view('software.show', [
+            'product' => $product,
+            'slug' => $slug,
+            'products' => config('software.products'),
+        ]);
+    })->where('slug', '[a-z0-9-]+')->name('software.show');
 
     Auth::routes();
 
