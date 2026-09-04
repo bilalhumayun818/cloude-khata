@@ -59,7 +59,6 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VariationTemplateController;
 use App\Http\Controllers\WarrantyController;
-use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -77,23 +76,8 @@ include_once 'install_r.php';
 
 Route::middleware(['setData'])->group(function () {
     Route::get('/', function () {
-        return view('welcome', ['products' => config('software.products')]);
-    })->name('software.index');
-
-    Route::get('/software/{slug}', function ($slug) {
-        $product = config("software.products.{$slug}");
-
-        abort_unless($product, 404);
-
-        return view('software.show', [
-            'product' => $product,
-            'slug' => $slug,
-            'products' => config('software.products'),
-        ]);
-    })->where('slug', '[a-z0-9-]+')->name('software.show');
-
-    Route::get('/'.config('software.login_path'), [LoginController::class, 'showLoginForm'])
-        ->name('software.login');
+        return view('welcome');
+    });
 
     Auth::routes();
 
