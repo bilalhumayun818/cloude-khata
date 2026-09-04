@@ -17,6 +17,8 @@ class SoftwareCatalogTest extends TestCase
             ->assertSee('DOMS')
             ->assertSee('RMS')
             ->assertSee('Paddle')
+            ->assertSee('bill.humayun1@gmail.com')
+            ->assertSee('+92 3003662818')
             ->assertDontSee('Sign in')
             ->assertDontSee('Orders today')
             ->assertDontSee('Running smoothly');

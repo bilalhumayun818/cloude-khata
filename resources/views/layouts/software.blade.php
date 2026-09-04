@@ -39,31 +39,54 @@
     </main>
 
     <footer class="site-footer" id="contact">
-        <div class="shell footer-grid">
-            <div>
+        <div class="shell">
+            <div class="footer-callout">
+                <div>
+                    <span>Let’s work together</span>
+                    <h2>Better operations start with the right tools.</h2>
+                </div>
+                <button class="footer-cta" type="button" data-buy-product="a BroshTech solution">
+                    Talk to our team <span aria-hidden="true">→</span>
+                </button>
+            </div>
+
+            <div class="footer-grid">
+                <div class="footer-about">
                 <a class="brand brand-light" href="{{ route('software.index') }}">
                     <span class="brand-mark" aria-hidden="true">
                         <svg viewBox="0 0 32 32"><path d="M8.5 9.5 16 5l7.5 4.5v4L16 18l-7.5-4.5v-4Z"/><path d="M8.5 18.5 16 23l7.5-4.5M8.5 14v8.5L16 27l7.5-4.5V14"/></svg>
                     </span>
                     <span>Brosh<span>Tech</span></span>
                 </a>
-                <p>Practical software built around how your business actually works.</p>
+                    <p>Practical software built around how your business actually works.</p>
+                </div>
+
+                <div class="footer-links">
+                    <span>Our solutions</span>
+                    <div class="footer-solution-links">
+                        @foreach(config('software.products') as $footerSlug => $footerProduct)
+                            <a href="{{ route('software.show', $footerSlug) }}">{{ $footerProduct['name'] }} <i aria-hidden="true">↗</i></a>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="footer-contact">
+                    <span class="footer-label">Contact sales</span>
+                    <a href="mailto:{{ config('software.sales_email') }}">
+                        <span class="footer-contact-icon" aria-hidden="true">@</span>
+                        <span><small>Email</small><strong>{{ config('software.sales_email') }}</strong></span>
+                    </a>
+                    <a href="tel:{{ preg_replace('/[^+0-9]/', '', config('software.sales_phone')) }}">
+                        <span class="footer-contact-icon" aria-hidden="true">☎</span>
+                        <span><small>Call or WhatsApp</small><strong>{{ config('software.sales_phone') }}</strong></span>
+                    </a>
+                </div>
             </div>
-            <div class="footer-links">
-                <span>Explore</span>
-                <a href="{{ route('software.index') }}#solutions">Our solutions</a>
-                <a href="{{ route('software.show', 'cloud-khata') }}">Cloud Khata</a>
-                <a href="{{ route('software.show', 'vendify') }}">Vendify</a>
+
+            <div class="footer-bottom">
+                <span>&copy; {{ date('Y') }} BroshTech. All rights reserved.</span>
+                <a href="{{ route('software.index') }}" aria-label="Back to homepage">Back to top <span aria-hidden="true">↑</span></a>
             </div>
-            <div class="footer-links">
-                <span>Talk to sales</span>
-                <a href="mailto:{{ config('software.sales_email') }}">{{ config('software.sales_email') }}</a>
-                <a href="tel:{{ preg_replace('/[^+0-9]/', '', config('software.sales_phone')) }}">{{ config('software.sales_phone') }}</a>
-            </div>
-        </div>
-        <div class="shell footer-bottom">
-            <span>&copy; {{ date('Y') }} BroshTech. All rights reserved.</span>
-            <span>Built for ambitious businesses.</span>
         </div>
     </footer>
 
