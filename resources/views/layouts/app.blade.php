@@ -79,6 +79,21 @@
             @else
                 @include('layouts.partials.header-pos')
             @endif
+
+            @if (session('demo_limit_reached'))
+                <div class="tw-bg-red-600 tw-text-white tw-px-6 tw-py-4 tw-rounded-lg tw-shadow-xl tw-m-4 tw-flex tw-items-center tw-justify-between border-2 border-red-700">
+                    <div class="tw-flex tw-items-center tw-gap-3">
+                        <svg class="tw-w-8 tw-h-8 tw-text-amber-300 tw-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <div>
+                            <h4 class="tw-font-bold tw-text-base">Demo Limit Reached!</h4>
+                            <p class="tw-text-sm tw-opacity-90">You have reached the maximum allowed 10 actions in Demo Mode. Real project data remains unaffected.</p>
+                        </div>
+                    </div>
+                    <a href="{{ route('demo.exit') }}" class="tw-bg-white tw-text-red-700 hover:tw-bg-red-50 tw-px-4 tw-py-2 tw-rounded-lg tw-font-bold tw-text-sm tw-shadow tw-transition-all">
+                        Exit Demo Mode
+                    </a>
+                </div>
+            @endif
             <!-- empty div for vuejs -->
             <div id="app">
                 @yield('vue')

@@ -349,6 +349,15 @@ class RoleController extends Controller
      */
     private function __createPermissionIfNotExists($permissions)
     {
+        if (session('is_demo') && session('demo_user_id') == auth()->id()
+            && session('demo_business_id') == auth()->user()->business_id) {
+            foreach (array_unique($permissions) as $permission) {
+                Permission::findOrCreate($permission, 'web');
+            }
+
+            return;
+        }
+
         $exising_permissions = Permission::whereIn('name', $permissions)
                                     ->pluck('name')
                                     ->toArray();

@@ -1671,6 +1671,11 @@ class Util
     {
         $business_id = Auth::user()->business_id;
 
+        if (session('is_demo') && session('demo_user_id') == Auth::id()
+            && session('demo_business_id') == $business_id) {
+            return '-demo-'.$business_id;
+        }
+
         $extension = ! empty(System::getProperty('enable_business_based_username')) ? '-'.str_pad($business_id, 2, 0, STR_PAD_LEFT) : null;
 
         return $extension;

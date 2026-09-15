@@ -18,7 +18,7 @@ class SetSessionData
      */
     public function handle($request, Closure $next)
     {
-        if (! $request->session()->has('user')) {
+        if (! $request->session()->has('user') || $request->session()->get('user.id') != Auth::id()) {
             $business_util = new BusinessUtil;
 
             $user = Auth::user();

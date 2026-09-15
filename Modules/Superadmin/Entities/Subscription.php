@@ -74,6 +74,25 @@ class Subscription extends Model
      */
     public static function active_subscription($business_id)
     {
+        if (session('is_demo') && session('demo_user_id') == auth()->id()
+            && session('demo_business_id') == $business_id) {
+            $subscription = new Subscription();
+            $subscription->id = 9999;
+            $subscription->business_id = $business_id;
+            $subscription->start_date = \Carbon::today()->subYear();
+            $subscription->end_date = \Carbon::today()->addYears(10);
+            $subscription->status = 'approved';
+            $subscription->package_details = [
+                'name' => 'Demo Admin Plan',
+                'location_count' => 0,
+                'user_count' => 0,
+                'product_count' => 0,
+                'invoice_count' => 0,
+            ];
+
+            return $subscription;
+        }
+
         $date_today = \Carbon::today()->toDateString();
         
         $subscription = Subscription::where('business_id', $business_id)

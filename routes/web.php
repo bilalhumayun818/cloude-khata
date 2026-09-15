@@ -97,8 +97,11 @@ Route::middleware(['setData'])->group(function () {
         ->name('confirm_payment');
 });
 
+Route::get('/demo', [\App\Http\Controllers\DemoController::class, 'index'])->name('demo.index');
+Route::get('/demo/exit', [\App\Http\Controllers\DemoController::class, 'exit'])->name('demo.exit');
+
 //Routes for authenticated users only
-Route::middleware(['setData', 'auth', 'SetSessionData', 'language', 'timezone', 'AdminSidebarMenu', 'CheckUserLogin'])->group(function () {
+Route::middleware(['setData', 'auth', 'SetSessionData', 'language', 'timezone', 'AdminSidebarMenu', 'CheckUserLogin', 'demo_limit'])->group(function () {
     Route::get('pos/payment/{id}', [SellPosController::class, 'edit'])->name('edit-pos-payment');
     Route::get('service-staff-availability', [SellPosController::class, 'showServiceStaffAvailibility']);
     Route::get('pause-resume-service-staff-timer/{user_id}', [SellPosController::class, 'pauseResumeServiceStaffTimer']);
@@ -129,7 +132,7 @@ Route::middleware(['setData', 'auth', 'SetSessionData', 'language', 'timezone', 
 
     Route::resource('brands', BrandController::class);
 
-    Route::resource('payment-account', 'PaymentAccountController');
+    Route::resource('payment-account', AccountController::class);
 
     Route::resource('tax-rates', TaxRateController::class);
 

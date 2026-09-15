@@ -1,6 +1,28 @@
 @inject('request', 'Illuminate\Http\Request')
 <!-- Main Header -->
 
+@if(session('is_demo'))
+<div style="background: linear-gradient(90deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%); border-bottom: 2px solid #3b82f6; padding: 10px 24px; color: #ffffff; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-family: system-ui, -apple-system, sans-serif; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);" class="no-print">
+    <div style="display: flex; align-items: center; gap: 14px;">
+        <span style="background: #ef4444; color: #ffffff; padding: 4px 12px; border-radius: 9999px; font-weight: 900; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; box-shadow: 0 2px 6px rgba(239, 68, 68, 0.5); display: inline-flex; align-items: center; gap: 5px;">
+            <i class="fas fa-bolt"></i> DEMO MODE
+        </span>
+        <span style="color: #f8fafc; font-size: 13.5px; font-weight: 600; letter-spacing: 0.01em;">
+            Full Admin Access Enabled • Maximum 10 Actions Per Feature
+        </span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 14px;">
+        <div style="background: rgba(255, 255, 255, 0.12); color: #f8fafc; padding: 5px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; font-family: monospace; border: 1px solid rgba(255, 255, 255, 0.2); display: inline-flex; align-items: center; gap: 6px;">
+            <span style="color: #cbd5e1;">Limit:</span>
+            <strong style="color: #fef08a; font-size: 14px; font-weight: 800;">10 per Feature</strong>
+        </div>
+        <a href="{{ route('demo.exit') }}" style="background: #dc2626; color: #ffffff; padding: 6px 16px; border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.25); transition: all 0.2s;" onmouseover="this.style.background='#b91c1c'" onmouseout="this.style.background='#dc2626'">
+            <i class="fas fa-sign-out-alt"></i> Exit Demo
+        </a>
+    </div>
+</div>
+@endif
+
 <div
     class="  tw-transition-all tw-duration-5000 tw-border-b tw-bg-gradient-to-r tw-from-@if(!empty(session('business.theme_color'))){{session('business.theme_color')}}@else{{'primary'}}@endif-800 tw-to-@if(!empty(session('business.theme_color'))){{session('business.theme_color')}}@else{{'primary'}}@endif-900 tw-shrink-0 lg:tw-h-15 tw-border-primary-500/30 no-print">
     <div class="tw-px-5 tw-py-3">
@@ -196,6 +218,9 @@
                 <details class="tw-dw-dropdown tw-relative tw-inline-block tw-text-left">
                     <summary data-toggle="popover"
                         class="tw-dw-m-1 tw-inline-flex tw-transition-all tw-ring-1 tw-ring-white/10 tw-cursor-pointer tw-duration-200 tw-bg-@if(!empty(session('business.theme_color'))){{session('business.theme_color')}}@else{{'primary'}}@endif-800 hover:tw-bg-@if(!empty(session('business.theme_color'))){{session('business.theme_color')}}@else{{'primary'}}@endif-700 tw-py-1.5 tw-px-3 tw-rounded-lg tw-items-center tw-justify-center tw-text-sm tw-font-medium tw-text-white hover:tw-text-white tw-gap-1">
+                        @if(session('is_demo'))
+                            <span style="background: #ef4444; color: #ffffff; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 800; text-transform: uppercase;">DEMO</span>
+                        @endif
                         <span class="tw-hidden md:tw-block">{{ Auth::User()->first_name }} {{ Auth::User()->last_name }}</span>
 
                         <svg  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="tw-size-5"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" /></svg>
