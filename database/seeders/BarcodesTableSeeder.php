@@ -14,8 +14,7 @@ class BarcodesTableSeeder extends Seeder
      */
     public function run()
     {
-        Barcode::create([
-            'id' => 1,
+        Barcode::firstOrCreate(['id' => 1], [
             'name' => '20 Labels per Sheet',
             'description' => 'Sheet Size: 8.5" x 11", Label Size: 4" x 1", Labels per sheet: 20',
             'width' => 4,
@@ -35,8 +34,7 @@ class BarcodesTableSeeder extends Seeder
             'updated_at' => '2017-12-18 06:13:44',
         ]);
 
-        Barcode::create([
-            'id' => 2,
+        Barcode::firstOrCreate(['id' => 2], [
             'name' => '30 Labels per sheet',
             'description' => 'Sheet Size: 8.5" x 11", Label Size: 2.625" x 1", Labels per sheet: 30',
             'width' => 2.625,
@@ -56,8 +54,7 @@ class BarcodesTableSeeder extends Seeder
             'updated_at' => '2017-12-18 06:10:40',
         ]);
 
-        Barcode::create([
-            'id' => 3,
+        Barcode::firstOrCreate(['id' => 3], [
             'name' => '32 Labels per sheet',
             'description' => 'Sheet Size: 8.5" x 11", Label Size: 2" x 1.25", Labels per sheet: 32',
             'width' => 2,
@@ -77,8 +74,7 @@ class BarcodesTableSeeder extends Seeder
             'updated_at' => '2017-12-18 05:55:40',
         ]);
 
-        Barcode::create([
-            'id' => 4,
+        Barcode::firstOrCreate(['id' => 4], [
             'name' => '40 Labels per sheet',
             'description' => 'Sheet Size: 8.5" x 11", Label Size: 2" x 1", Labels per sheet: 40',
             'width' => 2,
@@ -98,8 +94,7 @@ class BarcodesTableSeeder extends Seeder
             'updated_at' => '2017-12-18 05:58:40',
         ]);
 
-        Barcode::create([
-            'id' => 5,
+        Barcode::firstOrCreate(['id' => 5], [
             'name' => '50 Labels per Sheet',
             'description' => 'Sheet Size: 8.5" x 11", Label Size: 1.5" x 1", Labels per sheet: 50',
             'width' => 1.5,
@@ -119,8 +114,7 @@ class BarcodesTableSeeder extends Seeder
             'updated_at' => '2017-12-18 05:51:10',
         ]);
 
-        Barcode::create([
-            'id' => 6,
+        Barcode::firstOrCreate(['id' => 6], [
             'name' => 'Continuous Rolls - 31.75mm x 25.4mm',
             'description' => 'Label Size: 31.75mm x 25.4mm, Gap: 3.18mm',
             'width' => 1.25,
