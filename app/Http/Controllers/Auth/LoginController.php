@@ -84,12 +84,16 @@ class LoginController extends Controller
         ];
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        $this->businessUtil->activityLog(auth()->user(), 'logout');
+        $user = $request->user();
+        if (! empty($user)) {
+            $this->businessUtil->activityLog($user, 'logout');
+        }
 
-        request()->session()->flush();
-        \Auth::logout();
+        $this->guard()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return redirect('/login');
     }

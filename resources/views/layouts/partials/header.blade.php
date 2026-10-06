@@ -216,7 +216,7 @@
 
 
                 <details class="tw-dw-dropdown tw-relative tw-inline-block tw-text-left">
-                    <summary data-toggle="popover"
+                    <summary
                         class="tw-dw-m-1 tw-inline-flex tw-transition-all tw-ring-1 tw-ring-white/10 tw-cursor-pointer tw-duration-200 tw-bg-@if(!empty(session('business.theme_color'))){{session('business.theme_color')}}@else{{'primary'}}@endif-800 hover:tw-bg-@if(!empty(session('business.theme_color'))){{session('business.theme_color')}}@else{{'primary'}}@endif-700 tw-py-1.5 tw-px-3 tw-rounded-lg tw-items-center tw-justify-center tw-text-sm tw-font-medium tw-text-white hover:tw-text-white tw-gap-1">
                         @if(session('is_demo'))
                             <span style="background: #ef4444; color: #ffffff; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 800; text-transform: uppercase;">DEMO</span>
@@ -256,9 +256,11 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ action([\App\Http\Controllers\Auth\LoginController::class, 'logout']) }}"
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit"
                                 class="tw-flex tw-items-center tw-gap-2 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg hover:tw-text-gray-900 hover:tw-bg-gray-100"
-                                role="menuitem" tabindex="-1">
+                                role="menuitem">
                                 <svg aria-hidden="true" class="tw-w-5 tw-h-5" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" fill="none"
                                     stroke-linecap="round" stroke-linejoin="round">
@@ -269,7 +271,8 @@
                                     <path d="M18 15l3 -3" />
                                 </svg>
                                 @lang('lang_v1.sign_out')
-                            </a>
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </details>
